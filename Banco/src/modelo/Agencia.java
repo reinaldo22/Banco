@@ -18,7 +18,7 @@ public class Agencia {
 	}
 
 	public void mostrarCodigo() {
-		System.out.println("Mostrando codigo da Agência: "+codigo);
+		System.out.println("Mostrando codigo da Agência: "+this.codigo);
 	}
 
 }

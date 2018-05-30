@@ -1,29 +1,30 @@
 package modelo;
 
- public class Conta {
+import java.util.ArrayList;
+
+public  class Conta {
 	
-	private String codigo;
+	
 	private double saldo;
 	private String dataAbert;
 	private Agencia agencia;
 	
+	
 	public Conta(String pCodigo,double pSaldo, String pDataAbert, Agencia pAgencia) {
-		this.codigo = "";
 		this.saldo = 0.0;
 		this.dataAbert = "";
-		this.agencia = getAgencia();
+		this.agencia = pAgencia;
+		
 	}
 	public Conta() {
 		
 	}
-	
-	
-	
 	public void sacar(double valor) {
 		System.out.println("Realizando saque de R$: "+ valor +" da conta");
 		if(valor > 0) {
 			if(saldo >= valor) {
-				saldo = saldo -  valor;
+				saldo = saldo -  valor;	
+				
 				
 			}
 			
@@ -40,18 +41,11 @@ package modelo;
 		
 	}
 	
-	public void mostrarHistorico() {
+	public void mostrarHistorico(Historico histo ) {
 		
+		this.historico.add(histo);
 	}
-
 	
-	
-	public String getCodigo() {
-		return codigo;
-	}
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
-	}
 	public double getSaldo() {
 		return saldo;
 	}
@@ -69,15 +63,34 @@ package modelo;
 	}
 	public void setAgencia(Agencia agencia) {
 		this.agencia = agencia;
-	}	
-
+	}
+	public ArrayList<Historico> getHistorico() {
+		return historico;
+	}
+	public void setHistorico(ArrayList<Historico> historico) {
+		this.historico = historico;
+	}
 	public void mostrarSaldo() {
 		System.out.println("==============Dados da Conta============================");
-		System.out.println("Código:"+codigo);
 		System.out.println("Saldo : R$"+ saldo);
 		System.out.println("Data de abertura:"+dataAbert);
-		System.out.println("Agencia: "+agencia.getCodigo());
+		System.out.println("agencia:"+agencia.getCodigo());
+		
 		
 		
 	}
+	public void transferir(double valor,Conta c1){
+		if (c1 instanceof ContaCorrente){
+			if(valor >= this.saldo){
+				saldo-=valor;
+				c1.saldo += valor;
+			}
+			else{
+				System.out.println("não foi possivel");
+			}
+				
+		}		
+	}
+	
+	
 }
