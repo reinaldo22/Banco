@@ -7,36 +7,17 @@ import modelo.ContaPoupanca;
 
 public class Execucao {
 	public static void main(String[] args) {
-		Agencia ag1 = new Agencia("001");
-		ContaCorrente cc1 = new ContaCorrente("002", 0.0, "15/12/98", ag1, 0.0);
-		Cliente corrente1 = new Cliente("8798", "rua fulana", "090", "Eu", "12/10/99",cc1);
-		ContaCorrente cc2 = new ContaCorrente("002", 0.0, "15/12/98", ag1, 0.0);
-		Cliente corrente2 = new Cliente("8798", "rua ciclano", "090", "Eu", "12/10/99",cc2);
+		
+		Agencia ag = new Agencia("p99809");
+		ContaCorrente cc = new ContaCorrente(0.0, "12-1-22",ag);
+		ContaPoupanca cp = new ContaPoupanca(0.0,"9869",ag,0.1);
+		Cliente c1 = new Cliente("p89898", "Rua cogumelo","190", "joao", "18/05/1290",cc,cp);
 		
 		
-		ContaPoupanca cpp2 = new ContaPoupanca("002", 0.0, ag1, "13/9/00", 1.0);
-		Cliente poupanca1 = new Cliente("94010390204", "Rua mogi", "p97709", "poupançudo", "12/10/99", cpp2);
-		
-		/*corrente1.mostrarDadosCliente();
-		corrente1.depositarCorrente(500);
-		corrente1.sacarCorrente(400);
-		corrente1.saldoCorrente();
-		
-		corrente2.mostrarDadosCliente();
-		corrente2.depositarCorrente(600);
-		corrente2.sacarCorrente(550);
-		corrente2.saldoCorrente();
-		*/
-		
-		poupanca1.mostrarDadosCliente();
-		poupanca1.depositoPoupanca(500);
-		poupanca1.sacaPoupanca(100);
-		poupanca1.mostrarPoupanca();
-		
-	
-
-		
-		
+		c1.depositarCorrente(500);
+		c1.trasnfereCorrente(200, cp);
+		c1.saldoCorrente();
+		c1.saldoPoupanca();
 	}
 
 }
