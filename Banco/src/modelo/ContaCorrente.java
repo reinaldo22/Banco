@@ -48,22 +48,23 @@ public class ContaCorrente extends Conta {
 			}
 		}
 	}
-
-	public void imprimirContaCorrente() {
-		System.out.println("============Dados da conta corrente===========");
-		System.out.println("saldo: " + this.taxa);
-
-	}
-
-	public void transferir(double valor, ContaPoupanca c1) {
-		if (c1 instanceof ContaPoupanca) {
-			if (valor >= this.saldoCor) {
-				saldoCor -= valor;
-				c1.depositar(valor);
+	@Override
+	public void transferir(double valor, ContaPoupanca cp) {
+		if (cp instanceof ContaPoupanca) {
+			if (taxa >= valor) {
+				taxa = taxa - valor;
+				cp.depositar(valor);
 			} else {
 				System.out.println("não foi possivel");
 			}
 
 		}
 	}
+
+	public void imprimirContaCorrente() {
+		System.out.println("============Dados da conta corrente===========");
+		System.out.println("saldo: " + this.taxa);
+		this.getAgencia().mostrarAgencia();
+	}
+
 }

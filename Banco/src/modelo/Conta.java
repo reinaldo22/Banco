@@ -1,24 +1,24 @@
 package modelo;
 
-import java.util.ArrayList;
-
 public class Conta {
 
 	private double saldo;
 	private String dataAbert;
 	private Agencia agencia;
 
-	private ArrayList<Historico> history;
-
 	public Conta(double pSaldo, String pDataAbert, Agencia pAgencia) {
 		this.saldo = 0.0;
-		this.dataAbert = "";
+		this.dataAbert = pDataAbert;
 		this.agencia = pAgencia;
 
 	}
 
-	public Conta() {
+	public Agencia getAgencia() {
+		return agencia;
+	}
 
+	public void setAgencia(Agencia agencia) {
+		this.agencia = agencia;
 	}
 
 	public void sacar(double valor) {
@@ -27,6 +27,17 @@ public class Conta {
 			if (saldo >= valor) {
 				saldo = saldo - valor;
 
+			}
+
+		}
+	}
+	public void transferir(double valor, ContaPoupanca cp) {
+		if (cp instanceof ContaPoupanca) {
+			if (saldo >= valor) {
+				saldo = saldo - valor;
+				cp.depositar(valor);
+			} else {
+				System.out.println("não foi possivel");
 			}
 
 		}
@@ -43,15 +54,10 @@ public class Conta {
 
 	}
 
-	public void mostrarHistorico(Historico histo) {
-
-	}
-
 	public void mostrarSaldo() {
 		System.out.println("==============Dados da Conta============================");
-		System.out.println("Saldo : R$" + saldo);
 		System.out.println("Data de abertura:" + dataAbert);
-		System.out.println("agencia:" + agencia.getCodigo());
+		this.getAgencia().mostrarAgencia();
 
 	}
 

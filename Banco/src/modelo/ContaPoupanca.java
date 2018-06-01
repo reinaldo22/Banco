@@ -23,7 +23,7 @@ public class ContaPoupanca extends Conta {
 
 	@Override
 	public void depositar(double valor) {
-		System.out.println("depositado R$: " + valor+"Na conta Poupanca");
+		System.out.println("Transferido R$: " + valor+" Na conta Poupanca");
 		if (valor >= 0) {
 			this.jurosRend = jurosRend + valor;
 
@@ -36,6 +36,7 @@ public class ContaPoupanca extends Conta {
 	public void mostrarPoupanca() {
 		System.out.println("===== Rendimento da poupanca====");
 		System.out.println("Saldo: " + jurosRend);
+		this.getAgencia().mostrarAgencia();
 
 	}
 

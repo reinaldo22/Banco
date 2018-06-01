@@ -1,5 +1,7 @@
 package modelo;
 
+import java.util.ArrayList;
+
 public class Cliente {
 
 	private String cpf;
@@ -9,6 +11,7 @@ public class Cliente {
 	private String dataNasc;
 	private ContaCorrente cc;
 	private ContaPoupanca cp;
+	private ArrayList<Historico> history;
 
 	public Cliente(String pCpf, String pEnd, String pTel, String pNome, String pDataNasc) {
 		this.cpf = pCpf;
@@ -25,6 +28,22 @@ public class Cliente {
 		this.nome = pNome;
 		this.dataNasc = pDataNasc;
 		this.cc = cc;
+		this.cp = cp;
+	}
+	public Cliente(String pCpf, String pEnd, String pTel, String pNome, String pDataNasc, ContaCorrente cc) {
+		this.cpf = pCpf;
+		this.end = pEnd;
+		this.tel = pTel;
+		this.nome = pNome;
+		this.dataNasc = pDataNasc;
+		this.cc = cc;
+	}
+	public Cliente(String pCpf, String pEnd, String pTel, String pNome, String pDataNasc,ContaPoupanca cp) {
+		this.cpf = pCpf;
+		this.end = pEnd;
+		this.tel = pTel;
+		this.nome = pNome;
+		this.dataNasc = pDataNasc;
 		this.cp = cp;
 	}
 
